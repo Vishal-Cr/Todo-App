@@ -1,0 +1,335 @@
+@use './lightVariables'as *;
+@use './mediaqueries'as *;
+@use './lightTheme'as *;
+@use './dragndrop'as *;
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+$Default-Font_family:'Josefin Sans',
+sans-serif;
+$Dark-Background-color:hsl(235, 21%, 11%);
+$Todo-List-Background: hsl(235, 24%, 19%);
+$Circle-Color:hsl(233, 14%, 35%);
+$Links-color: hsl(234, 11%, 52%);
+$Links-color-hover:hsl(236, 33%, 92%);
+$Border-color:hsl(233, 14%, 35%);
+
+//Check Circles
+@mixin circle {
+    width: 25px;
+    height: 25px;
+    border: 1px solid $Circle-Color;
+    border-radius: 50%;
+    margin: 0 10px;
+    cursor: pointer;
+
+}
+
+@mixin themeSwitcher {
+    transition: all 0.5s ease;
+}
+
+//Buttons
+@mixin button {
+    color: $Links-color;
+    font-weight: 400;
+    font-size: 1.1rem;
+    width: auto;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+        color: hsl(236, 33%, 92%);
+    }
+    &.light-bg:hover {
+        color: $Very-Dark-Grayish-Blue;
+        transition: all 0.5s ease;
+    }
+}
+
+.whole-page {
+    margin: 0;
+    padding: 0;
+    background-image: url('/images/bg-desktop-dark.jpg');
+    background-size: 100% 35%;
+    background-color: $Dark-Background-color;
+    transition: all 0.8s ease-in-out;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: $Default-Font_family;
+}
+
+
+
+
+    .header_brand {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 35%;
+        height: 10vh;
+        color: #fff;
+        margin-top: 2rem;
+        letter-spacing: 5.5px;
+        font-size: 22px;
+        margin-bottom: 1.5rem;
+
+        & h1 {
+               letter-spacing: 1.5;
+            font-weight: 700;
+        }
+
+        .image {
+            background-image: url('/images/icon-sun.svg');
+            background-size: cover;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            transition: background-image 1s ease-in;
+
+
+            &.light {
+                background-image: $light-background-image-theme;
+                background-size: cover;
+                height: 37px;
+
+            }
+        }
+    }
+
+    .input_container {
+        background-color: $Todo-List-Background;
+        width: 35%;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        padding: 1rem;
+        border-radius: 5px;
+        @include themeSwitcher();
+
+        .circle {
+            @include circle;
+
+
+
+        }
+
+        &.light-bg {
+            background-color: $Very-Light-Gray;
+        }
+    }
+
+    .todo-input {
+        background-color: $Todo-List-Background;
+        width: 90%;
+        height: 40px;
+        height: 30px;
+        border: none;
+        letter-spacing: 1px;
+        font-size: 18px;
+        font-weight: 400;
+        font-family: $Default-Font_family;
+        margin-left: 9px;
+        color:$Links-color-hover;
+        @include themeSwitcher();
+
+        &:focus {
+            outline: none;
+            border: none;
+        }
+
+        &.light-bg {
+            background-color: $Very-Light-Gray;
+        }
+    }
+
+    .todo-list-container {
+        @include themeSwitcher();
+        background: $Todo-List-Background;
+        height: 20rem;
+        width: 35%;
+        margin-top: 1rem;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+        display: flex;
+        justify-content: left;
+        flex-direction: column;
+        overflow-y: auto;
+
+
+
+
+        &::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background-color: hsl(235, 24%, 19%);
+            border-radius: 25px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            box-shadow: inset 0 0 6px rgba(105, 126, 223, 0.3);
+            border-radius: 100px;
+
+        }
+
+
+
+        .todo-list-ul {
+            @include themeSwitcher();
+            background-color: $Todo-List-Background;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: left;
+            color: $Links-color-hover;
+
+            list-style-type: none;
+
+            &.light-bg {
+                background: $Very-Light-Gray;
+                color: $Very-Dark-Grayish-Blue;
+
+
+            }
+
+            .todo-div {
+                justify-content: left;
+                align-items: center;
+                position: relative;
+                border-bottom: 0.2px solid $Border-color;
+                margin: 0.5rem 0;
+                padding: 0.7rem;
+                width: 100%;
+                height: auto;
+                display: flex;
+                transition: all 1s ease;
+                cursor:pointer;
+
+                &:hover .img-cross {
+                    display: block;
+
+                }
+
+                &:hover .todo-circle {
+
+                    border-image: linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+                    border-image-slice: 10;
+
+                }
+
+                .todo-circle {
+                    width: 25px;
+                    height: 25px;
+                    border: 1px solid $Circle-Color;
+                    border-radius: 50%;
+                    margin: 0 10px;
+                    cursor: pointer;
+                    transition: background-image 0.5s ease-in;
+
+                    &.checked {
+                        background-image: url('/images/icon-check.svg');
+                        background: url('/images/icon-check.svg'),
+                        linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        background-position: center;
+
+                    }
+                }
+
+                .todo-list {
+                    margin-left: 2.9rem;
+                    cursor: pointer;
+                    font-family: $Default-Font_family;
+                       color:$Ligh-Grayish-Blue;
+                    transition: all 0.5s ease;
+                    width: 80%;
+                    height: 100%;
+
+                    &.checked {
+                        text-decoration: line-through;
+                        opacity: 0.5;
+
+                    }
+
+                }
+
+                & .img-cross {
+                    color: hsl(233, 14%, 35%);
+                    width: 25px;
+                    height: 25px;
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    right: 1rem;
+                    display: none;
+                    margin-right: 0.5rem;
+                    display: none;
+                    transition: hover 1s ease-in;
+                    cursor: pointer;
+
+                }
+            }
+        }
+    }
+
+    .todo-filter {
+        border-top: 0.2px solid $Border-color;
+        width: 35%;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        background: $Todo-List-Background;
+        padding: 0.5rem 1rem;
+        box-shadow: 14px 15px 30px -15px #111;
+
+        .active-stats {
+            color: $Links-color;
+            pointer-events: none;
+        }
+
+        .mid-stats {
+            margin: 0 auto;
+            display: flex;
+            width: 50%;
+            display: flex;
+            justify-content: space-between;
+
+            & :nth-child(1) {
+                color: hsl(220, 98%, 61%);
+                font-weight: 400;
+                width: auto;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+            }
+        }
+
+        .completed {
+            @include button;
+
+        }
+
+        .uncomplete {
+            @include button;
+        }
+
+        .clear {
+            @include button;
+        }
+    }

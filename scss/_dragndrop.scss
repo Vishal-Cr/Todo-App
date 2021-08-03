@@ -1,0 +1,13 @@
+@use './lightVariables'as *;
+
+.dragndrop {
+    width: 50%;
+    margin-top: 1.5rem;
+    color: $Dark-Grayish-Blue;
+    font-size: 18px;
+    text-align: center;
+    height: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

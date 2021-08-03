@@ -1,0 +1,326 @@
+
+
+@use './breakpoints/breakpoints.scss'as *;
+
+@include media('<=phone') {
+    html {
+        font-size: 62.5%;
+    }
+}
+
+.whole-page {
+    @include media('>=phone', '<=tablet') {
+        html {
+            font-size: 62.5%;
+        }
+
+
+    }
+
+
+
+
+    .header_brand {
+        @include media('>=LGdesktop') {
+            .image {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        @include media('>=tablet', '<=desktop') {
+            width: 60%;
+
+            .image {
+                width: 45px;
+                height: 45px
+            }
+        }
+
+        @include media('>=phone', '<=tablet') {
+            width: 80%;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            letter-spacing: 1.5;
+        }
+
+        .image,
+        .image.light {
+            width: auto;
+            height: auto;
+            min-width: 30px;
+            min-height: 30px;
+        }
+
+        @include media('<=phone') {
+            width: 70%;
+            margin-bottom: 3rem;
+
+            h1 {
+                font-size: 2rem;
+                letter-spacing: 2.5;
+            }
+
+            .image,
+            .image.light {
+                width: auto;
+                height: auto;
+                min-width: 20px;
+                min-height: 20px;
+            }
+        }
+    }
+
+
+
+    .input_container {
+        @include media('>=desktop') {
+            height: 3rem;
+
+            .todo-input {
+
+                height: auto;
+                font-size: 1rem;
+            }
+        }
+
+        @include media('>=tablet', '<=desktop') {
+            font-size: 2.2rem;
+            width: 80%;
+
+        }
+
+        @include media('>=phone', '<=tablet') {
+            width: 80%;
+            height: 2.5rem;
+            border-radius: 5px;
+
+            .circle {
+                width: auto;
+                min-width: 25px;
+                min-height: 25px;
+                height: auto;
+            }
+
+            .todo-input {
+                font-size: 1rem;
+
+            }
+
+        }
+
+        @include media('<=phone') {
+            width: 70%;
+            height: 4rem;
+
+            .circle {
+                width: auto;
+                min-width: 20px;
+                min-height: 20px;
+                height: auto;
+            }
+
+            .todo-input {
+                font-size: clamp(0.9rem, 2.5vw, 2rem);
+            }
+        }
+    }
+
+    .todo-list-container {
+        @include media('>=desktop') {
+
+            height: 18rem;
+
+            .todo-list-ul {
+
+                .todo-div {
+                    height: 2.2rem;
+
+                    .todo-circle {
+                        width: auto;
+                        min-width: 25px;
+                        min-height: 25px;
+                        height: auto;
+                    }
+
+                    .todo-list {
+                        font-size: clamp(1rem, 1.5vw, 2rem);
+                    }
+
+                    .img-cross {
+                        width: auto;
+                        min-width: 20px;
+                        min-height: 20px;
+                        height: auto;
+                    }
+                }
+            }
+        }
+
+        @include media('>=tablet', '<=desktop') {
+            width: 80%;
+            height: 15rem;
+
+            .todo-list-ul {
+
+                .todo-div {
+                    height: 2.2rem;
+
+                    .todo-circle {
+                        width: auto;
+                        min-width: 25px;
+                        min-height: 25px;
+                        height: auto;
+                    }
+
+                    .todo-list {
+                        font-size: clamp(1rem, 1.8vw, 2rem);
+                    }
+
+                    .img-cross {
+                        width: auto;
+                        min-width: 20px;
+                        min-height: 20px;
+                        height: auto;
+                    }
+                }
+            }
+        }
+
+        @include media('>=phone', '<=tablet') {
+            width: 80%;
+            height: 15rem;
+
+            .todo-list-ul {
+
+                .todo-div {
+                    height: 2rem;
+
+                    .todo-circle {
+                        width: auto;
+                        min-width: 25px;
+                        min-height: 25px;
+                        height: auto;
+                    }
+
+                    .todo-list {
+                        font-size: clamp(1rem, 2.5vw, 2rem);
+                    }
+
+                    .img-cross {
+                        width: auto;
+                        min-width: 20px;
+                        min-height: 20px;
+                        height: auto;
+                    }
+                }
+            }
+        }
+
+        @include media('<=phone') {
+            width: 70%;
+            height: 22rem;
+
+
+
+
+            .todo-list-ul {
+
+                .todo-div {
+
+                    .todo-circle {
+                        width: auto;
+                        min-width: 20px;
+                        min-height: 20px;
+                        height: auto;
+                    }
+
+                    .todo-list {
+                        font-size: clamp(0.9rem, 2.5vw, 2rem);
+                    }
+
+                    .img-cross {
+                        width: auto;
+                        min-width: 20px;
+                        min-height: 20px;
+                        height: auto;
+                    }
+                }
+            }
+        }
+
+    }
+
+    .todo-filter {
+
+
+        @include media('>=desktop') {
+            .active-stats,
+
+            .all,
+            .btn {
+
+
+                font-size: 1rem;
+
+            }
+        }
+
+        @include media('>=tablet', '<=desktop') {
+            width: 80%;
+            height: 2.5rem;
+            .active-stats,
+
+            .all,
+            .btn {
+
+
+                font-size: 1rem;
+
+            }
+
+
+        }
+
+        @include media('>=phone', '<=tablet') {
+
+            width: 80%;
+
+            .active-stats,
+
+            .all,
+            .btn {
+
+
+                font-size: 1rem;
+
+            }
+        }
+
+        @include media('<=phone') {
+            width: 70%;
+            height: 4rem;
+            padding: 0 2px;
+            .active-stats,
+
+            .all,
+            .btn {
+
+
+                font-size: clamp(0.7rem, 2.7vw, 2rem);
+
+
+            }
+
+
+        }
+    }
+
+    @include media('<=phone') {
+        .dragndrop {
+            font-size: clamp(0.7rem, 2.7vw, 2rem);
+        }
+    }
+}
