@@ -4,7 +4,6 @@
 * Testing
 *
 **/
-/* Extra large devices (large laptops and desktops, 1200px and up) */
 @media (max-width: 550px) {
   html {
     font-size: 62.5%;
@@ -15,7 +14,7 @@
     font-size: 62.5%;
   }
 }
-@media (min-width: 1920px) {
+@media (min-width: 1366px) {
   .whole-page .header_brand .image {
     width: 50px;
     height: 50px;
@@ -23,7 +22,7 @@
 }
 @media (min-width: 768px) and (max-width: 1366px) {
   .whole-page .header_brand {
-    width: 60%;
+    width: 40%;
   }
   .whole-page .header_brand .image {
     width: 45px;
@@ -65,7 +64,7 @@
 }
 @media (min-width: 1366px) {
   .whole-page .input_container {
-    height: 3rem;
+    height: 2.5rem;
   }
   .whole-page .input_container .todo-input {
     height: auto;
@@ -75,7 +74,7 @@
 @media (min-width: 768px) and (max-width: 1366px) {
   .whole-page .input_container {
     font-size: 2.2rem;
-    width: 80%;
+    width: 40%;
   }
 }
 @media (min-width: 550px) and (max-width: 768px) {
@@ -134,7 +133,7 @@
 }
 @media (min-width: 768px) and (max-width: 1366px) {
   .whole-page .todo-list-container {
-    width: 80%;
+    width: 40%;
     height: 15rem;
   }
   .whole-page .todo-list-container .todo-list-ul .todo-div {
@@ -185,11 +184,15 @@
     width: 70%;
     height: 22rem;
   }
+  .whole-page .todo-list-container .todo-list-ul .todo-div {
+    height: 2.5rem;
+  }
   .whole-page .todo-list-container .todo-list-ul .todo-div .todo-circle {
     width: auto;
     min-width: 20px;
     min-height: 20px;
     height: auto;
+    margin-left: 1.5rem;
   }
   .whole-page .todo-list-container .todo-list-ul .todo-div .todo-list {
     font-size: clamp(0.9rem, 2.5vw, 2rem);
@@ -210,13 +213,13 @@
 }
 @media (min-width: 768px) and (max-width: 1366px) {
   .whole-page .todo-filter {
-    width: 80%;
+    width: 40%;
     height: 2.5rem;
   }
   .whole-page .todo-filter .active-stats,
 .whole-page .todo-filter .all,
 .whole-page .todo-filter .btn {
-    font-size: 1rem;
+    font-size: clamp(0.2rem, 1.5vw, 1rem);
   }
 }
 @media (min-width: 550px) and (max-width: 768px) {
@@ -226,7 +229,7 @@
   .whole-page .todo-filter .active-stats,
 .whole-page .todo-filter .all,
 .whole-page .todo-filter .btn {
-    font-size: 1rem;
+    font-size: clamp(0.5rem, 2.6vw, 2rem);
   }
 }
 @media (max-width: 550px) {
@@ -243,7 +246,7 @@
 }
 @media (max-width: 550px) {
   .whole-page .dragndrop {
-    font-size: clamp(0.7rem, 2.7vw, 2rem);
+    font-size: clamp(0.1rem, 2.5vw, 2rem);
   }
 }
 
@@ -271,7 +274,8 @@
 }
 .whole-page .todo-filter.light-bg {
   background-color: #fafafa;
-  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 5px 30px -6px rgba(0, 0, 0, 0.2);
+  border-top: 0.1px solid #fafafa;
 }
 
 .dragndrop {
@@ -427,9 +431,8 @@
   position: relative;
   border-bottom: 0.2px solid #4d5066;
   margin: 0.5rem 0;
-  padding: 0.7rem;
   width: 100%;
-  height: auto;
+  height: 100%;
   display: flex;
   transition: all 1s ease;
   cursor: pointer;
@@ -446,8 +449,9 @@
   height: 25px;
   border: 1px solid #4d5066;
   border-radius: 50%;
-  margin: 0 10px;
+  margin: 0 1.5rem;
   cursor: pointer;
+  margin-bottom: 0.5rem;
   transition: background-image 0.5s ease-in;
 }
 .todo-list-container .todo-list-ul .todo-div .todo-circle.checked {
@@ -458,13 +462,15 @@
   background-position: center;
 }
 .todo-list-container .todo-list-ul .todo-div .todo-list {
-  margin-left: 2.9rem;
+  margin-left: 1.2rem;
   cursor: pointer;
   font-family: "Josefin Sans", sans-serif;
   color: #d2d3db;
   transition: all 0.5s ease;
   width: 80%;
+  margin-bottom: 0.5rem;
   height: 100%;
+  transform: translateY(30%);
 }
 .todo-list-container .todo-list-ul .todo-div .todo-list.checked {
   text-decoration: line-through;
@@ -483,10 +489,11 @@
   display: none;
   transition: hover 1s ease-in;
   cursor: pointer;
+  margin-bottom: 0.5rem;
 }
 
 .todo-filter {
-  border-top: 0.2px solid #4d5066;
+  border-top: 0.1px solid #777a92;
   width: 35%;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -495,7 +502,7 @@
   align-items: center;
   background: #25273c;
   padding: 0.5rem 1rem;
-  box-shadow: 14px 15px 30px -15px #111;
+  box-shadow: 0px 5px 3px -6px #111;
 }
 .todo-filter .active-stats {
   color: #777a92;

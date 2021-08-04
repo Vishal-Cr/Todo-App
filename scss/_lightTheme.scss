@@ -38,6 +38,7 @@
 
     .todo-filter.light-bg {
         background-color: $Very-Light-Gray;
-        box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 5px 30px -6px rgba(0, 0, 0, 0.2);
+        border-top: 0.1px solid $Very-Light-Gray;
     }
 }
