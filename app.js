@@ -1,5 +1,5 @@
-const todoInput=document.getElementById('input');
-const todoList=document.getElementById('todo_List');
+const todoInput = document.getElementById("input");
+const todoList = document.getElementById("todo_List");
 const todoFilter = document.querySelector(".todo-filter");
 const activeTodos = document.querySelector(".active-stats");
 const themeImage = document.querySelector(".image");
@@ -8,6 +8,8 @@ const body = document.querySelector(".whole-page");
 const inputContainer = document.querySelector(".input_container");
 const todosContainer = document.querySelector(".todo-list-container");
 const buttons = document.querySelectorAll(".btn");
+//function when page is loaded
+document.addEventListener("DOMContentLoaded", getTodos);
 todoInput.addEventListener("keyup", (event) => {
   if (event.key === "Enter") {
     event.preventDefault();
@@ -19,6 +21,7 @@ let counter = 0;
 
 const addTodo = (event) => {
   if (event.target.value.length > 0) {
+    //create the list container
     const todoContainer = document.createElement("div");
     todoContainer.classList.add("todo-div");
     todoContainer.setAttribute("draggable", true);
@@ -33,9 +36,14 @@ const addTodo = (event) => {
     newTodo.classList.add("todo-list");
     todoContainer.appendChild(newTodo);
 
+    //add the todo to local storage
+    saveLocalTodos(event.target.value);
+
+    //Create the terminate button
     const cross = document.createElement("img");
     cross.src = "./images/icon-cross.svg";
     cross.classList.add("img-cross");
+
     todoContainer.appendChild(cross);
 
     todoList.appendChild(todoContainer);
@@ -61,6 +69,7 @@ const addTodo = (event) => {
 
         const todo = item.parentElement;
         counter -= 1;
+        removeLocalTodos(todo);
         todo.remove();
         setCounter(counter);
       }
@@ -179,3 +188,59 @@ themeImage.addEventListener("click", () => {
   todoFilter.classList.toggle("light-bg");
   buttons.forEach((item) => item.classList.toggle("light-bg"));
 });
+
+function saveLocalTodos(todo) {
+  //CHeck if todo already exist
+  let todos;
+  if (localStorage.getItem("todos") === null) {
+    todos = [];
+  } else {
+    todos = JSON.parse(localStorage.getItem("todos"));
+  }
+  todos.push(todo);
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
+function getTodos() {
+  let todos;
+  if (localStorage.getItem("todos") === null) {
+    todos = [];
+  } else {
+    todos = JSON.parse(localStorage.getItem("todos"));
+  }
+  todos.forEach((todo) => {
+    const todoContainer = document.createElement("div");
+    todoContainer.classList.add("todo-div");
+    todoContainer.setAttribute("draggable", true);
+    todoContainer.classList.add("draggable");
+
+    const circle = document.createElement("div");
+    circle.classList.add("todo-circle");
+    todoContainer.appendChild(circle);
+
+    const newTodo = document.createElement("li");
+    newTodo.innerText = todo;
+    newTodo.classList.add("todo-list");
+    todoContainer.appendChild(newTodo);
+
+    //Create the terminate button
+    const cross = document.createElement("img");
+    cross.src = "./images/icon-cross.svg";
+    cross.classList.add("img-cross");
+    todoContainer.appendChild(cross);
+
+    todoList.appendChild(todoContainer);
+    
+  });
+}
+
+function removeLocalTodos(todo) {
+  let todos;
+  if (localStorage.getItem("todos") === null) {
+    todos = [];
+  } else {
+    todos = JSON.parse(localStorage.getItem("todos"));
+  }
+  let todoIndex = todo.innerText;
+  todos.splice(todos.indexOf(todoIndex), 1);
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
